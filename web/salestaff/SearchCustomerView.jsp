@@ -1,6 +1,7 @@
 
 <%@ page import="java.util.*, model.Customer, model.Employee, dao.CustomerDAO,model.SaleStaff" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -131,7 +132,7 @@
     </head>
     <body>
         <%
-            SaleStaff saleStaff = (SaleStaff) session.getAttribute("saleStaff");
+            Employee saleStaff = (Employee) session.getAttribute("saleStaff");
             List<Customer> outsubListCustomer = (List<Customer>) request.getAttribute("customerList");
         %>
 
@@ -146,7 +147,7 @@
         <% if (outsubListCustomer != null) { %>
 
         <% if (outsubListCustomer.isEmpty()) { %>
-        <p>Không tìm thấy khách hàng.</p>
+        <p>Không tìm thấy khách hàng.</p>   
         <% } else { %>
         <table>
             <tr>
@@ -172,7 +173,7 @@
 
         <% }%> 
         <div class="bottom-bar">
-            <a href="salestaff/MainSaleStaffView.jsp" class="back-btn">← Quay lại</a>
+            <a href="${pageContext.request.contextPath}/salestaff/MainSaleStaffView.jsp" class="back-btn">← Quay lại</a>
         </div>    
     </body>
 </html>

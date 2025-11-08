@@ -14,6 +14,7 @@
                 color: #333;
             }
 
+
             h1 {
                 text-align: center;
                 margin-bottom: 30px;
@@ -120,18 +121,27 @@
                 background-color: #7f8c8d;
             }
 
-            .top-bar {
+            .back{
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin-top: 10px;
             }
+
+            .title{
+                text-align: left;
+                color: #000000;
+                margin-top:0px;
+                font-size: 16px;
+                font-weight: 500;
+            }
         </style>
     </head>
     <body>
+        <div class="header">
+            <p class="title">Gara ô tô ABC / Tìm kiếm thông tin dịch vụ,phu tùng</p>
+        </div>
 
-
-        <h1>Tìm kiếm dịch vụ / phụ tùng</h1>
 
         <form action="${pageContext.request.contextPath}/SearchServlet" method="get">
             <input type="text" name="keyword" placeholder="Nhập tên dịch vụ hoặc phụ tùng..."
@@ -155,18 +165,18 @@
         } else {
         %>
         <table>
-            <tr><th>ID</th><th>Tên</th><th>Mô tả</th><th>Giá</th></tr>
+            <tr><th>ID</th><th>Tên</th><th>Mô tả</th><th>Giá (VNÐ)</th></tr>
                     <% for (Service s : listService) {%>
             <tr>
                 <td><%= s.getId()%></td>
                 <td>
                     <a href="${pageContext.request.contextPath}/SearchServlet?serviceId=<%= s.getId()%>">
-                        <% %>
+                        <%%>
                         <%= s.getName()%>
                     </a>
                 </td>
                 <td><%= s.getDescription()%></td>
-                <td><%= s.getPrice()%></td>
+                <td><%= String.format("%,.0f", s.getPrice())%></td>
             </tr>
             <% } %>
         </table>
@@ -181,7 +191,7 @@
         } else {
         %>
         <table>
-            <tr><th>ID</th><th>Tên</th><th>Mô tả</th><th>Giá</th></tr>
+            <tr><th>ID</th><th>Tên</th><th>Mô tả</th><th>Giá (VNÐ)</th></tr>
                     <% for (SparePart p : listSparePart) {%>
             <tr>
                 <td><%= p.getId()%></td>
@@ -191,7 +201,7 @@
                     </a>
                 </td>
                 <td><%= p.getDescription()%></td>
-                <td><%= p.getUnitPrice()%></td>
+                <td><%= String.format("%,.0f", p.getUnitPrice())%></td>
             </tr>
             <% } %>
         </table>
@@ -199,10 +209,10 @@
 
         <%
             } // end if any results
-%>
+        %>
 
-        <div class="top-bar">
-            <a href="MainMenuView.jsp" class="back-btn">← Quay lại</a>
+        <div class="back">
+            <a href="/PTTK" class="back-btn">← Quay lại</a>
         </div>
 
     </body>

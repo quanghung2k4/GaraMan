@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Invoice {
     private int id;
-    private Date date;
+    private Date createAt;
     private float totalAmount;
     private String status;
     private SaleStaff salesStaff;   
@@ -14,7 +14,7 @@ public class Invoice {
 
     public Invoice(int id, Date date, float totalAmount, String status, SaleStaff salesStaff, Customer customer) {
         this.id = id;
-        this.date = date;
+        this.createAt = date;
         this.totalAmount = totalAmount;
         this.status = status;
         this.salesStaff = salesStaff;
@@ -30,13 +30,14 @@ public class Invoice {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
+
 
     public float getTotalAmount() {
         return totalAmount;

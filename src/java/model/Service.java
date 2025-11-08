@@ -11,14 +11,14 @@ public class Service {
     private int numOfStaff;
     private float duration;
     private String description;
-    private double price;
+    private float price;
     
     
     public Service() {
         
     }
 
-    public Service(int id, String name, String description, double price) {
+    public Service(int id, String name, String description, float price) {
         this.id = id;
         this.name =name;
         this.description=description;
@@ -54,6 +54,6 @@ public class Service {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public float getPrice() { return price; }
+    public void setPrice(float price) { this.price = price; }
 }

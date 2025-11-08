@@ -57,6 +57,13 @@
             .back-btn:hover {
                 background-color: #217dbb;
             }
+            .title{
+                text-align: left;
+                color: #000000;
+                margin:15px;
+                font-size: 16px;
+                font-weight: 500;
+            }
         </style>
     </head>
 
@@ -65,6 +72,9 @@
         SparePart sparePart = (SparePart) request.getAttribute("sparepart");
     %>
     <body>
+        <div class="header">
+            <p class="title">Gara ô tô ABC / Tìm kiếm thông tin dịch vụ,phu tùng / Chi tiêt</p>
+        </div>
         <% if(service != null) {%>
         <div class="container">
             <h1>Chi tiết dịch vụ</h1>

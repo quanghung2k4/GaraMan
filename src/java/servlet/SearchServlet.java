@@ -39,14 +39,14 @@ public class SearchServlet extends HttpServlet {
             }
 
             // Forward về lại cùng trang tìm kiếm
-            RequestDispatcher rd = request.getRequestDispatcher("SearchView.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("customer/SearchView.jsp");
             rd.forward(request, response);
         }
         if(serviceId != null){
             ServiceDAO dao = new ServiceDAO();
             Service service = dao.getServiceByID(Integer.parseInt(serviceId));
             request.setAttribute("service", service);
-            request.getRequestDispatcher("DetailView.jsp").forward(request, response);
+            request.getRequestDispatcher("customer/DetailView.jsp").forward(request, response);
             
         }
         
@@ -54,7 +54,7 @@ public class SearchServlet extends HttpServlet {
             SparePartDAO dao = new SparePartDAO();
             SparePart sparepart = dao.getSparePartByID(Integer.parseInt(sparePartId));
             request.setAttribute("sparepart", sparepart);
-            request.getRequestDispatcher("DetailView.jsp").forward(request, response);
+            request.getRequestDispatcher("customer/DetailView.jsp").forward(request, response);
         }
         
     }

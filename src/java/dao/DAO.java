@@ -15,7 +15,6 @@ public class DAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("✅ Kết nối DB thành công (DAO)");
         } catch (Exception e) {
             System.err.println("❌ Lỗi kết nối: " + e.getMessage());
         }

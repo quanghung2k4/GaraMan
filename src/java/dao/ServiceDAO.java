@@ -17,7 +17,32 @@ public class ServiceDAO extends DAO{
     public ServiceDAO() {
         super();
     }
+            
     
+    public List<Service> getAllService(){
+        List<Service> list = new ArrayList<>();
+        String sql = "SELECT * FROM tblservice";
+
+        try (PreparedStatement ps = super.conn.prepareStatement(sql)) {
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Service s = new Service();
+                    s.setId(rs.getInt("id"));
+                    s.setName(rs.getString("name"));
+                    s.setPrice(rs.getFloat("price"));
+                    s.setNumOfStaff(rs.getInt("numOfStaff"));
+                    s.setDuration(rs.getFloat("duration"));
+                    s.setDescription(rs.getString("description"));
+                    list.add(s);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
     // 🔍 Tìm kiếm dịch vụ theo từ khóa
     public List<Service> searchService(String name) {
         List<Service> list = new ArrayList<>();

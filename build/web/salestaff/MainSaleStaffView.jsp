@@ -54,7 +54,7 @@
     </style>
 
     <%
-        SaleStaff e  = (SaleStaff)(new EmployeeDAO()).getEmployee();
+        Employee e  = (Employee)(new EmployeeDAO()).getEmployee();
         session.setAttribute("saleStaff", e);
     %>
     <body>
@@ -63,7 +63,7 @@
         <div class="greeting">
             Xin chào, <%= (e != null ? e.getName() : "Nhân viên") %>
         </div>
-        <a href="./SearchCustomerView.jsp" class="button">Thanh toán</a>
+        <a href="/PTTK/salestaff/SearchCustomerView.jsp" class="button">Thanh toán</a>
     </div>
     </body>
 </html>
