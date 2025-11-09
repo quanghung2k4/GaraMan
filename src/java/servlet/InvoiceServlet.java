@@ -104,7 +104,7 @@ public class InvoiceServlet extends HttpServlet {
                     }
                 }
                 
-                Employee saleStaff = (Employee) request.getSession().getAttribute("saleStaff");
+                SaleStaff saleStaff = (SaleStaff) request.getSession().getAttribute("saleStaff");
                 invoice.setStatus("Da thanh toan");
                 invoice.getSalesStaff().setId(saleStaff.getId());
                 (new InvoiceDAO()).updateInvoice(invoice);

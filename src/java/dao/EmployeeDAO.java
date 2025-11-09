@@ -42,14 +42,25 @@ public class EmployeeDAO extends DAO{
 
         return s;
     }
-    public boolean checkLogin(String username,String password) throws SQLException{
+    public Employee checkLogin(Employee e) throws SQLException{
         String sql="select * from tblemployee where username=? and password=?";
         try(PreparedStatement ps =conn.prepareStatement(sql)){
-            ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(1, e.getUsername());
+            ps.setString(2, e.getPassword());
             try(ResultSet rs = ps.executeQuery()){
-                return rs.next();
-            }
+                if (rs.next()) {
+                Employee emp = new Employee();
+                emp.setId(rs.getInt("id"));
+                emp.setName(rs.getString("name"));
+                emp.setPhone(rs.getString("phone"));
+                emp.setEmail(rs.getString("email"));
+                emp.setUsername(rs.getString("username"));
+                emp.setRole(rs.getString("role"));
+                emp.setDob(rs.getDate("dob"));
+                return emp;
+            } else {
+                return null;
+            }            }
         }
     }
     

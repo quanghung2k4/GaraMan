@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Employee;
+import model.SaleStaff;
 
 /**
  *
@@ -52,10 +54,19 @@ public class LoginServlet extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             EmployeeDAO e = new EmployeeDAO();
-            boolean check = e.checkLogin(username, password);
-            if(check){
-                
-                request.getRequestDispatcher("salestaff/MainSaleStaffView.jsp").forward(request, response);
+            Employee e1 = new Employee();
+            e1.setUsername(username);
+            e1.setPassword(password);
+            Employee employee = e.checkLogin(e1);
+            if(employee != null){
+                if(e.getEmployee().getRole().equals("Nhân viên bán hàng")){
+                    SaleStaff saleStaff = new SaleStaff();
+                    saleStaff.setId(employee.getId());
+                    saleStaff.setName(employee.getName());
+                    request.getSession().setAttribute("saleStaff",saleStaff);
+                    request.getRequestDispatcher("salestaff/MainSaleStaffView.jsp").forward(request, response);
+                }
+
             } else{
                 
                 request.setAttribute("errorMessage", "Sai tài khoản hoặc mật khẩu!");

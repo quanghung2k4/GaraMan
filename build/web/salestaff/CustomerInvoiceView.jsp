@@ -15,7 +15,7 @@
             body {
                 font-family: 'Segoe UI', Tahoma, sans-serif;
                 margin: 0;
-                padding: 20px;
+                padding: 10px;
                 background: #f4f6f9;
                 color: #333;
             }
@@ -29,9 +29,6 @@
                 color: #2c3e50;
             }
 
-            h3 {
-                font-weight: normal;
-            }
 
             table {
                 width: 100%;
@@ -110,6 +107,10 @@
                 text-align: center;
                 margin-top: 30px;
             }
+            .info-box .row {
+                display: flex;
+                gap: 20px; /* khoảng cách giữa các mục */
+            }
         </style>
     </head>
 
@@ -140,15 +141,21 @@
         %>
 
 
-        <h1>Hóa đơn khách hàng</h1>
+        <h3> Gara Ô Tô ABC / Nhân viên bán hàng / Thanh toán / Hóa đơn khách hàng</h3>
 
         <div class="info-box">
-            <h3><b>Mã hóa đơn:</b> <%= outInvoice.getId()%></h3>
-            <h3><b>Ngày tao:</b> <%= formattedDate%></h3>
-            <h3><b>Tên khách hàng:</b> <%= outInvoice.getCustomer().getName()%></h3>
-            <h3><b>Số điện thoại:</b> <%= outInvoice.getCustomer().getPhone()%></h3>
-            <h3><b>Địa chỉ:</b> <%= outInvoice.getCustomer().getAddress()%></h3>
+            <div class="row">
+                <p><b>Mã hóa đơn:</b> <%= outInvoice.getId()%></p>
+                <p><b>Ngày tạo:</b> <%= formattedDate%></p>
+            </div>
+            <div class="row">
+                <p><b>Tên khách hàng:</b> <%= outInvoice.getCustomer().getName()%></p>
+                <p><b>Số điện thoại:</b> <%= outInvoice.getCustomer().getPhone()%></p>
+                <p><b>Địa chỉ:</b> <%= outInvoice.getCustomer().getAddress()%></p>
+            </div>
+            
         </div>
+
 
         <!-- DANH SÁCH PHỤ TÙNG -->
         <h2>Danh sách phụ tùng</h2>

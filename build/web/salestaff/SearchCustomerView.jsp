@@ -9,9 +9,9 @@
         <title>Thanh toán - Tìm kiếm khách hàng</title>
         <style>
             body {
-                font-family: 'Segoe UI', Tahoma, sans-serif;
+                font-family: 'Segoe UI', sans-serif;
                 margin: 0;
-                padding: 40px;
+                padding: 10px;
                 background: #f4f6f9;
                 color: #333;
             }
@@ -132,11 +132,11 @@
     </head>
     <body>
         <%
-            Employee saleStaff = (Employee) session.getAttribute("saleStaff");
+            SaleStaff saleStaff = (SaleStaff) session.getAttribute("saleStaff");
             List<Customer> outsubListCustomer = (List<Customer>) request.getAttribute("customerList");
         %>
 
-        <h1>Tìm kiếm khách hàng</h1>
+        <h3> Gara Ô Tô ABC / Nhân viên bán hàng / Thanh toán / Tìm kiếm khách hàng</h3>
 
         <form action="${pageContext.request.contextPath}/SearchCustomerServlet" method="post">
             <input type="text" name="customer_name" placeholder="Nhập tên khách hàng..."

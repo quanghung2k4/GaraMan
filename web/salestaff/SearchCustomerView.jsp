@@ -132,11 +132,11 @@
     </head>
     <body>
         <%
-            Employee saleStaff = (Employee) session.getAttribute("saleStaff");
+            SaleStaff saleStaff = (SaleStaff) session.getAttribute("saleStaff");
             List<Customer> outsubListCustomer = (List<Customer>) request.getAttribute("customerList");
         %>
 
-        <h1>Tìm kiếm khách hàng</h1>
+        <h3>Tìm kiếm khách hàng</h1>
 
         <form action="${pageContext.request.contextPath}/SearchCustomerServlet" method="post">
             <input type="text" name="customer_name" placeholder="Nhập tên khách hàng..."

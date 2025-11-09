@@ -9,11 +9,11 @@
         <title>Hóa đơn</title>
         <style>
             body {
-                font-family: Arial, sans-serif;
+                font-family: "Times New Roman", serif;
                 margin: 40px;
             }
 
-            h1, h3 {
+            h1, h3,h4 {
                 text-align: center;
             }
 
@@ -80,6 +80,7 @@
             .title table, .title td{
                 border: none !important;
             }
+
         </style>
     </head>
 
@@ -117,10 +118,10 @@
                     </td>
                     <td>
                         <h1>HÓA ĐƠN</h1>
-                        <h3><%=formattedDate%></h3>
+                        <h4><i><%=formattedDate%></i></dd>
                     </td>
                     <td>
-                        <p>Mã hóa don: <%=invoice.getId()%></p>      
+                        <p>Mã hóa đơn: <%=invoice.getId()%></p>      
                     </td>
                 </tr>
             </table>
@@ -131,15 +132,14 @@
         <div class="customer-info">
             <table >
                 <tr>
-                    <td><strong>Tên khách hàng:</strong></td>
+                    <td>Tên khách hàng:</td>
                     <td><%=  customer.getName()%></td>
-                </tr>
-                <tr>
-                    <td><strong>Số điện thoại:</strong></td>
+
+                    <td>Số điện thoại:</td>
                     <td><%= customer.getPhone()%></td>
                 </tr>
                 <tr>
-                    <td><strong>Địa chỉ:</strong></td>
+                    <td>Địa chỉ:</td>
                     <td><%= customer.getAddress()%></td>
                 </tr>
             </table>
@@ -151,6 +151,7 @@
                 <th>STT</th>
                 <th>Tên dịch vụ/phụ tùng</th>
                 <th>Số lượng</th>
+                <th>Loại</th>
                 <th>Đơn giá (VNĐ)</th>
                 <th>Thành tiền (VNĐ)</th>
             </tr>
@@ -166,6 +167,7 @@
                 <td class="align-center"><%= i++%></td>
                 <td><%= is.getService().getName()%></td>
                 <td class="align-center"><%= is.getNumOfTime()%></td>
+                <td>Dịch vụ</td>
                 <td class="align-right"><%= String.format("%,.0f", is.getService().getPrice())%></td>
                 <td class="align-right"><%= String.format("%,.0f", is.getSubTotal())%></td>
             </tr>
@@ -180,6 +182,7 @@
                 <td class="align-center"><%= i++%></td>
                 <td><%= isp.getSparePart().getName()%></td>
                 <td class="align-center"><%= isp.getQuantity()%></td>
+                <td>Phụ tùng</td>
                 <td class="align-right"><%= String.format("%,.0f", isp.getSparePart().getUnitPrice())%></td>
                 <td class="align-right"><%= String.format("%,.0f", isp.getSubTotal())%></td>
             </tr>
@@ -190,7 +193,7 @@
 
             <!-- Tổng cộng -->
             <tr>
-                <td colspan="4" class="total">Tổng cộng:</td>
+                <td colspan="5" class="total">Tổng cộng:</td>
                 <td class="align-right"><strong><%= String.format("%,.0f", invoice.getTotalAmount())%></strong></td>
             </tr>
         </table>

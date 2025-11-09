@@ -15,7 +15,7 @@
             body {
                 font-family: 'Segoe UI', Tahoma, sans-serif;
                 margin: 0;
-                padding: 20px;
+                padding: 5px;
                 background: #f4f6f9;
                 color: #333;
             }
@@ -110,6 +110,10 @@
                 text-align: center;
                 margin-top: 30px;
             }
+            .info-box .row {
+                display: flex;
+                gap: 20px; /* khoảng cách giữa các mục */
+            }
         </style>
     </head>
 
@@ -143,12 +147,18 @@
         <h1>Hóa đơn khách hàng</h1>
 
         <div class="info-box">
-            <h3><b>Mã hóa đơn:</b> <%= outInvoice.getId()%></h3>
-            <h3><b>Ngày tao:</b> <%= formattedDate%></h3>
-            <h3><b>Tên khách hàng:</b> <%= outInvoice.getCustomer().getName()%></h3>
-            <h3><b>Số điện thoại:</b> <%= outInvoice.getCustomer().getPhone()%></h3>
-            <h3><b>Địa chỉ:</b> <%= outInvoice.getCustomer().getAddress()%></h3>
+            <div class="row">
+                <h3><b>Mã hóa đơn:</b> <%= outInvoice.getId()%></h3>
+                <h3><b>Ngày tạo:</b> <%= formattedDate%></h3>
+            </div>
+            <div class="row">
+                <h3><b>Tên khách hàng:</b> <%= outInvoice.getCustomer().getName()%></h3>
+                <h3><b>Số điện thoại:</b> <%= outInvoice.getCustomer().getPhone()%></h3>
+                <h3><b>Địa chỉ:</b> <%= outInvoice.getCustomer().getAddress()%></h3>
+            </div>
+            
         </div>
+
 
         <!-- DANH SÁCH PHỤ TÙNG -->
         <h2>Danh sách phụ tùng</h2>
