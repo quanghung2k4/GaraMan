@@ -1,3 +1,4 @@
+<%@page import="model.SaleStaff"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.*, model.Invoice, model.InvoiceService, model.InvoiceSparePart, model.Customer, model.Employee, dao.InvoiceDAO" %>
@@ -96,7 +97,7 @@
             List<InvoiceService> listServiceInvoice = (List<InvoiceService>) session.getAttribute("listServiceInvoice");
             List<InvoiceSparePart> listSparePartInvoice = (List<InvoiceSparePart>) session.getAttribute("listSparePartInvoice");
             Customer customer = (Customer) session.getAttribute("customer");
-            Employee saleStaff = (Employee) session.getAttribute("saleStaff");
+            SaleStaff saleStaff = (SaleStaff) session.getAttribute("saleStaff");
             java.util.Date date = invoice.getCreateAt();
             String formattedDate = "";
             if (date != null) {

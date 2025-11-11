@@ -1,6 +1,7 @@
+<%@page import="model.SaleStaff"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.util.*, model.Invoice, model.InvoiceService, model.InvoiceSparePart, model.Customer, model.Employee,model.SaleStaff dao.InvoiceDAO" %>
+<%@ page import="java.util.*, model.Invoice, model.InvoiceService, model.InvoiceSparePart, model.Customer, model.Employee, dao.InvoiceDAO" %>
 
 <!DOCTYPE html>
 <html>
@@ -199,9 +200,9 @@
         </table>
 
         <div style="display: flex; justify-content: center">
-            <button class="print-invoice" onclick="printInvoice()">In hóa đơnn</button>
+            <button class="print-invoice" onclick="printInvoice()">In hóa don</button>
 
-            <button class="print-invoice" onclick="window.location.href = 'salestaff/MainSaleStaffView.jsp'">Trở về</button>
+            <button class="print-invoice" onclick="window.location.href = 'salestaff/MainSaleStaffView.jsp'">Tro ve</button>
         </div>
     </body>
 
