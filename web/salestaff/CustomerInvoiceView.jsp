@@ -28,35 +28,59 @@
                 text-align: left;
                 color: #2c3e50;
             }
-
-            h3 {
-                font-weight: normal;
+            h3{
+                padding:2px;
+                margin:3px;
             }
 
             table {
                 width: 100%;
-                table-layout: auto;
+                table-layout: fixed; /* cố định độ rộng cột */
                 border-collapse: collapse;
-                margin-top: 15px;
+                margin-top: 8px;
                 background: #fff;
                 box-shadow: 0 0 8px rgba(0,0,0,0.1);
+                font-size: 13px; /* chữ nhỏ hơn để hiển thị nhiều hơn */
             }
 
             th, td {
                 border: 1px solid #ddd;
-                padding: 10px;
-                text-align: center;
-                width: auto;
+                padding: 6px; /* giảm padding */
+                text-align: left;
+                word-wrap: break-word; /* xuống dòng nếu dài */
             }
 
             th {
                 background: #3498db;
                 color: white;
+                text-align: center;
             }
 
             tr:nth-child(even) {
                 background: #f9f9f9;
             }
+
+            /* Đặt độ rộng cho từng cột */
+            th:nth-child(1), td:nth-child(1) {
+                width: 8%;
+                text-align: center;
+            }   /* Mã */
+            th:nth-child(2), td:nth-child(2) {
+                width: 40%;
+            }                      /* Tên */
+            th:nth-child(3), td:nth-child(3) {
+                width: 5%;
+                text-align: center;
+            }  /* Số lượng / Số lần / SĐT */
+            th:nth-child(4), td:nth-child(4) {
+                width: 19%;
+
+            }  /* Đơn giá */
+            th:nth-child(5), td:nth-child(5) {
+                width: 19%;
+
+            }                      /* Thành tiền / Địa chỉ */
+
             .delete-button{
                 border-radius: 50%;
                 border:none;
@@ -64,14 +88,13 @@
                 cursor: pointer;
             }
 
-            /* Style chung cho nút input */
             input[type="submit"].button{
                 background: #2ecc71;
                 color: white;
-                padding: 10px 20px;
+                padding: 8px 16px;
                 border: none;
-                border-radius: 8px;
-                font-size: 16px;
+                border-radius: 6px;
+                font-size: 14px;
                 cursor: pointer;
                 margin-right: 10px;
                 transition: background 0.2s ease;
@@ -80,15 +103,16 @@
             input[type="submit"].button:hover {
                 background: #27ae60;
             }
-
-            /* Style riêng cho thẻ <a> */
+            input[type="number"]{
+                width:25px;
+            }
             a.button {
                 background: #e74c3c;
                 color: white;
-                font-size: 16px;
+                font-size: 14px;
                 text-decoration: none;
-                padding: 5px 20px;
-                border-radius: 8px;
+                padding: 5px 15px;
+                border-radius: 6px;
                 transition: background 0.2s ease;
             }
 
@@ -99,20 +123,40 @@
             .info-box {
                 box-sizing: border-box;
                 background: #fff;
-                padding: 20px;
+                padding: 15px;
                 width: 100%;
                 border-radius: 8px;
+                font-size: 13px;
             }
 
             .footer-buttons {
                 display: flex;
                 justify-content: center;
                 text-align: center;
-                margin-top: 30px;
+                margin-top: 10px;
             }
             .info-box .row {
                 display: flex;
-                gap: 20px; /* khoảng cách giữa các mục */
+                gap: 10px;
+                font-size:15px;
+            }
+            .row p{
+                margin:1px;
+                padding:1px;
+            }
+            .button-add{
+                border-radius: 5px;
+                border:none;
+                color:white;
+                padding:4px;
+                background: #27ae60;
+            }
+            .select{
+                border-radius: 5px;
+                border:none;
+                color:white;
+                padding:4px;
+                background: #27ae60;
             }
         </style>
     </head>
@@ -144,24 +188,24 @@
         %>
 
 
-        <h1>Hóa đơn khách hàng</h1>
+        <h3>Gara Ô Tô ABC / Nhân viên bán hàng / Thanh toán / Hóa đơn khách hàng</h3>
 
         <div class="info-box">
             <div class="row">
-                <h3><b>Mã hóa đơn:</b> <%= outInvoice.getId()%></h3>
-                <h3><b>Ngày tạo:</b> <%= formattedDate%></h3>
+                <p><b>Mã hóa đơn:</b> <%= outInvoice.getId()%></p>
+                <p><b>Ngày tạo:</b> <%= formattedDate%></p>
             </div>
             <div class="row">
-                <h3><b>Tên khách hàng:</b> <%= outInvoice.getCustomer().getName()%></h3>
-                <h3><b>Số điện thoại:</b> <%= outInvoice.getCustomer().getPhone()%></h3>
-                <h3><b>Địa chỉ:</b> <%= outInvoice.getCustomer().getAddress()%></h3>
+                <p><b>Tên khách hàng:</b> <%= outInvoice.getCustomer().getName()%></p>
+                <p><b>Số điện thoại:</b> <%= outInvoice.getCustomer().getPhone()%></p>
+                <p><b>Địa chỉ:</b> <%= outInvoice.getCustomer().getAddress()%></p>
             </div>
-            
+
         </div>
 
 
         <!-- DANH SÁCH PHỤ TÙNG -->
-        <h2>Danh sách phụ tùng</h2>
+        <h3>Danh sách phụ tùng</h3>
         <table>
             <tr>
                 <th>Mã phụ tùng</th>
@@ -179,8 +223,8 @@
                 <td><%= isp.getSparePart().getId()%></td>
                 <td><%= isp.getSparePart().getName()%></td>
                 <td><%= isp.getQuantity()%></td>
-                <td><%= String.format("%,.0f", isp.getSparePart().getUnitPrice())%></td>
-                <td><%= String.format("%,.0f", isp.getSubTotal())%></td>
+                <td style="text-align: right"><%= String.format("%,.0f", isp.getSparePart().getUnitPrice())%></td>
+                <td style="text-align: right"><%= String.format("%,.0f", isp.getSubTotal())%></td>
 
             </tr>
             <% }
@@ -190,23 +234,23 @@
                 <tr>
                     <td></td>
                     <td colspan="1">
-                        <select name="sparePartId">
+                        <select class="select" name="sparePartId">
                             <option value="">Chọn phụ tùng</option>
                             <% for (SparePart sp : listSparePart) {%>
                             <option value="<%= sp.getId()%>"><%= sp.getName()%></option>
                             <% } %>
                         </select>
                     </td>
-                    <td><input type="number" name="quantity" value="1" min="1"></td>
+                    <td><input type="number" name="quantity" value="1" min="1" style></td>
                     <td colspan="1"></td>
                     <td colspan="1"></td>
-                    <td><input type="submit" value="Thêm"></td>
+                    <td><input class="button-add" type="submit" value="Thêm"></td>
                 </tr>
             </form>
         </table>
 
         <!-- DANH SÁCH DỊCH VỤ -->
-        <h2>Danh sách dịch vụ</h2>
+        <h3>Danh sách dịch vụ</h3>
         <table>
             <tr>
                 <th>Mã dịch vụ</th>
@@ -224,8 +268,8 @@
                 <td><%= is.getService().getId()%></td>
                 <td><%= is.getService().getName()%></td>
                 <td><%= is.getNumOfTime()%></td>
-                <td><%= String.format("%,.0f", is.getService().getPrice())%></td>
-                <td><%= String.format("%,.0f", is.getSubTotal())%></td>
+                <td style="text-align: right"><%= String.format("%,.0f", is.getService().getPrice())%></td>
+                <td style="text-align: right"><%= String.format("%,.0f", is.getSubTotal())%></td>
             </tr>
             <% }
                 }%>
@@ -235,8 +279,8 @@
                 <tr>
                     <td></td>
                     <td colspan="1">
-                        <select name="serviceId">
-                            <option value="">Chọn dich vu</option>
+                        <select class="select" name="serviceId">
+                            <option value="">Chọn dịch vụ</option>
                             <% for (Service s : listService) {%>
                             <option value="<%= s.getId()%>"><%= s.getName()%></option>
                             <% }%>
@@ -245,13 +289,13 @@
                     <td><input type="number" name="time" value="1" min="1"></td>
                     <td colspan="1"></td>
                     <td colspan="1"></td>
-                    <td><input type="submit" value="Thêm"></td>
+                    <td><input class="button-add"type="submit" value="Thêm"></td>
                 </tr>
             </form>
         </table>
 
 
-        <div style="text-align:right">
+        <div style="text-align:right; margin-right: 60px">
             <h3 >Tổng tiền: <%= String.format("%,.0f VNĐ", total)%></h3>
         </div>    
         <div class="footer-buttons">

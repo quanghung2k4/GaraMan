@@ -11,7 +11,7 @@
             body {
                 font-family: 'Segoe UI', Tahoma, sans-serif;
                 margin: 0;
-                padding: 40px;
+                padding: 10px;
                 background: #f4f6f9;
                 color: #333;
             }
@@ -136,7 +136,7 @@
             List<Customer> outsubListCustomer = (List<Customer>) request.getAttribute("customerList");
         %>
 
-        <h3>Tìm kiếm khách hàng</h1>
+        <h3>Gara Ô Tô ABC / Nhân viên bán hàng / Thanh toán / Tìm kiếm khách hàng</h3>
 
         <form action="${pageContext.request.contextPath}/SearchCustomerServlet" method="post">
             <input type="text" name="customer_name" placeholder="Nhập tên khách hàng..."
@@ -149,23 +149,23 @@
         <% if (outsubListCustomer.isEmpty()) { %>
         <p>Không tìm thấy khách hàng.</p>   
         <% } else { %>
-        <table>
+        <table style="width:100%; border-collapse: collapse;">
             <tr>
-                <th>Mã khách hàng</th>
-                <th>Tên khách hàng</th>
-                <th>Số điện thoại</th>
-                <th>Địa chỉ</th>
+                <th style="width: 12%; text-align:center;">Mã khách hàng</th>
+                <th style="width: 25%; text-align:left;">Tên khách hàng</th>
+                <th style="width: 20%; text-align:center;">Số điện thoại</th>
+                <th style="width: 43%; text-align:left;">Địa chỉ</th>
             </tr>
             <% for (Customer s : outsubListCustomer) {%>
             <tr>
-                <td><%= s.getId()%></td>
-                <td>
+                <td style="text-align:center;"><%= s.getId()%></td>
+                <td style="text-align:left;">
                     <a href="${pageContext.request.contextPath}/InvoiceServlet?customer_id=<%= s.getId()%>">
                         <%= s.getName()%>
                     </a>
                 </td>
-                <td><%= s.getPhone()%></td>
-                <td><%= s.getAddress()%></td>
+                <td style="text-align:center;"><%= s.getPhone()%></td>
+                <td style="text-align:left;"><%= s.getAddress()%></td>
             </tr>
             <% } %>
         </table>

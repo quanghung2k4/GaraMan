@@ -11,7 +11,7 @@
         <style>
             body {
                 font-family: "Times New Roman", serif;
-                margin: 40px;
+                margin: 8px;
             }
 
             h1, h3,h4 {
@@ -22,6 +22,7 @@
                 width: 100%;
                 border-collapse: collapse;
                 margin-top: 15px;
+                table-layout: fixed;
             }
 
             th, td {
@@ -34,14 +35,34 @@
                 text-align: center;
                 background-color: #f0f0f0;
             }
+            /* Chỉ áp dụng cho bảng có class invoice-table */
+            .invoice-table th:nth-child(1),
+            .invoice-table td:nth-child(1) {
+                width: 3%;
+                text-align: center;
+            }
 
-            .customer-info td {
-                border: none;
-                padding: 4px 8px;
+            .invoice-table th:nth-child(2),
+            .invoice-table td:nth-child(2) {
+                width: 40%;
             }
-            .customer-info table{
-                width: fit-content;
+
+            .invoice-table th:nth-child(3),
+            .invoice-table td:nth-child(3) {
+                width: 5%;
+                text-align: center;
             }
+
+            .invoice-table th:nth-child(4),
+            .invoice-table td:nth-child(4) {
+                width: 15%;
+            }
+
+            .invoice-table th:nth-child(5),
+            .invoice-table td:nth-child(5) {
+                width: 15%;
+            }
+
 
             .total {
                 text-align: right;
@@ -77,6 +98,13 @@
                 border: none;
                 border-radius: 6px;
                 cursor: pointer;
+            }
+            .customer-info .row {
+                display: flex;          /* cho các phần tử con nằm ngang */
+                gap: 30px;              /* khoảng cách giữa các mục */
+            }
+            .customer-info p {
+                margin: 4px 0;
             }
             .title table, .title td{
                 border: none !important;
@@ -126,28 +154,18 @@
                     </td>
                 </tr>
             </table>
-        </div>
-
-        <line/>    
+        </div>  
         <!-- Thông tin khách hàng -->
         <div class="customer-info">
-            <table >
-                <tr>
-                    <td>Tên khách hàng:</td>
-                    <td><%=  customer.getName()%></td>
-
-                    <td>Số điện thoại:</td>
-                    <td><%= customer.getPhone()%></td>
-                </tr>
-                <tr>
-                    <td>Địa chỉ:</td>
-                    <td><%= customer.getAddress()%></td>
-                </tr>
-            </table>
+            <div class="row">
+                <p><b>Tên khách hàng:</b> <%= customer.getName()%></p>
+                <p><b>Số điện thoại:</b> <%= customer.getPhone()%></p>
+            </div>
+            <p><b>Địa chỉ:</b> <%= customer.getAddress()%></p>
         </div>
 
         <!-- Chi tiết dịch vụ & phụ tùng -->
-        <table>
+        <table class="invoice-table">
             <tr>
                 <th>STT</th>
                 <th>Tên dịch vụ/phụ tùng</th>
@@ -200,9 +218,9 @@
         </table>
 
         <div style="display: flex; justify-content: center">
-            <button class="print-invoice" onclick="printInvoice()">In hóa don</button>
+            <button class="print-invoice" onclick="printInvoice()">In hóa đơn</button>
 
-            <button class="print-invoice" onclick="window.location.href = 'salestaff/MainSaleStaffView.jsp'">Tro ve</button>
+            <button class="print-invoice" onclick="window.location.href = 'salestaff/MainSaleStaffView.jsp'">Trở về</button>
         </div>
     </body>
 

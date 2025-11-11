@@ -139,7 +139,7 @@
     </head>
     <body>
         <div class="header">
-            <p class="title">Gara ô tô ABC / Tìm kiếm thông tin dịch vụ,phu tùng</p>
+            <p class="title">Gara ô tô ABC / Tìm kiếm thông tin dịch vụ</p>
         </div>
 
 

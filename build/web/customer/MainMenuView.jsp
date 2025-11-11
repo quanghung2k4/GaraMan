@@ -52,7 +52,7 @@
         <header>
             <h2>Gara Ô Tô ABC</h2>
             <nav>
-                <a href="./customer/SearchView.jsp" target="_self">Tìm kiếm dịch vụ / phụ tùng</a>
+                <a href="./customer/SearchView.jsp" target="_self">Tìm kiếm thông tin dịch vụ</a>
                 <a href="<%= request.getContextPath()%>/employee/Login.jsp" target="_self">Đăng nhập</a>
             </nav>
         </header>

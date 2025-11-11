@@ -73,7 +73,7 @@
     %>
     <body>
         <div class="header">
-            <p class="title">Gara ô tô ABC / Tìm kiếm thông tin dịch vụ,phu tùng / Chi tiêt</p>
+            <p class="title">Gara ô tô ABC / Tìm kiếm thông tin dịch vụ / Chi tiết</p>
         </div>
         <% if(service != null) {%>
         <div class="container">
@@ -104,7 +104,7 @@
                 <tr><td>Tên phụ tùng</td><td><%= sparePart.getName()%></td></tr>
                 <tr><td>Số lượng tồn kho</td><td><%= sparePart.getQuanity()%></td></tr>
                 <tr><td>Số lượng đã bán</td><td><%= sparePart.getSoldNum()%></td></tr>
-                <tr><td>Đơn giá</td><td><%= sparePart.getUnitPrice()%> VNĐ</td></tr>
+                <tr><td>Đơn giá</td><td><%= String.format("%,.0f VNĐ", sparePart.getUnitPrice())%></td></tr>
                 <tr><td>Mô tả</td><td><%= sparePart.getDescription()%></td></tr>
             </table>
 
